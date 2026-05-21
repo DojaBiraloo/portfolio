@@ -13,6 +13,13 @@ const WorkSection = () => {
 
   const items = useMemo(() => videos.slice(0, 4), []);
 
+  const projectLinks = [
+    "https://gsap-mojito-animated-website.vercel.app/",
+    "https://gsap-spylt-ten.vercel.app/",
+    "https://karma-1rxg.vercel.app/",
+    "https://flowershop-gsap.vercel.app/",
+  ];
+
   useGSAP(
     () => {
       // IMPORTANT
@@ -140,7 +147,7 @@ const WorkSection = () => {
         "
         style={{ transform: "translate(0,0)" }}
       >
-        {items.map((item) => (
+        {items.map((item, index) => (
           <article
             key={item.id}
             className="
@@ -166,7 +173,9 @@ const WorkSection = () => {
             }}
           >
             <a
-              href="/"
+              href={projectLinks[index]}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={`Open ${item.videoName}`}
               className="
                 relative
