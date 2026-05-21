@@ -226,7 +226,7 @@ export default function Footer() {
 
               <a
                 ref={buttonRef}
-                href="/src/assets/pdf/Aprapya-CV.pdf"
+                href="/Aprapya-CV.pdf"
                 download="Aprapya-CV.pdf"
                 className="mt-8 inline-block rounded-full bg-black px-7 py-3 text-sm font-medium font-apfel text-white transition-all duration-300 hover:scale-105 hover:bg-[#111]"
               >

@@ -426,7 +426,7 @@ export default function NavBar() {
                   <a
                     key={index}
                     {...commonProps}
-                    href="/cv.pdf"
+                    href="/Aprapya-CV.pdf"
                     download
                     className="mt-4 w-max cursor-pointer rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:scale-[1.03] hover:bg-[#111]"
                   >
