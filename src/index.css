@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@import url(https://db.onlinewebfonts.com/c/773a09dbe570f813e0a4b16598d4776f?family=P22+Declaration+W01+Script);
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+   background-color: #fcfcfc;
+}
+
+@font-face {
+  font-family: "HeroFont";
+  src: url("/src/assets/fonts/BiggerDisplay.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Hero-para";
+  src: url("/src/assets/fonts/Karimun.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Kensington";
+  src: url("./assets/fonts/Kensington.otf")
+    format("opentype");
+
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Boxing-Regular";
+  src: url("./assets/fonts/Boxing-Regular.otf")
+    format("opentype");
+
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Chillax";
+  src: url("./assets/fonts/Chillax.ttf")
+    format("truetype");
+
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "apfel";
+  src: url("./assets/fonts/ApfelGrotezk-Regular.otf")
+    format("opentype");
+
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "yatra";
+  src: url("./assets/fonts/YatraOne-Regular.ttf")
+    format("truetype");
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+@theme {
+  --font-kensington: "Kensington", serif;
+  --font-boxing: "Boxing-Regular", sans-serif;
+  --font-chillax: "Chillax", sans-serif;
+  --font-apfel: "apfel", sans-serif;
+  --font-yatra: "yatra", sans-serif;
+  --font-herofont: "HeroFont", sans-serif;
+
+}
