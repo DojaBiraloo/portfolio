@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useCallback } from "react";
 import videos from "./video";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -10,6 +10,7 @@ const WorkSection = () => {
   const galleryRef = useRef(null);
   const containerRef = useRef(null);
   const titleRef = useRef(null);
+  const videoRefs = useRef([]);
 
   const items = useMemo(() => videos.slice(0, 4), []);
 
@@ -101,6 +102,15 @@ const WorkSection = () => {
     };
   }, []);
 
+  // Lazy-load video src on first hover
+  const handleVideoHover = useCallback((index) => {
+    const video = videoRefs.current[index];
+    if (video && !video.src) {
+      video.src = items[index].videoSrc;
+      video.load();
+    }
+  }, [items]);
+
   return (
     <section
     id="projects"
@@ -150,6 +160,7 @@ const WorkSection = () => {
         {items.map((item, index) => (
           <article
             key={item.id}
+            onMouseEnter={() => handleVideoHover(index)}
             className="
               work-article
               group
@@ -235,7 +246,7 @@ const WorkSection = () => {
 
               {/* VIDEO */}
               <video
-                src={item.videoSrc}
+                ref={(el) => (videoRefs.current[index] = el)}
                 className="
                   absolute
                   inset-0

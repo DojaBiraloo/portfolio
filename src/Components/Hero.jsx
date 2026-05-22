@@ -1,10 +1,10 @@
 import { useRef, useEffect } from "react";
-import img1 from "../assets/about-pics/img1.jpg";
-import img2 from "../assets/about-pics/img2.png";
-import img3 from "../assets/about-pics/img3.jpg";
-import img4 from "../assets/about-pics/img4.jpg";
-import img5 from "../assets/about-pics/img5.jpg";
-import img6 from "../assets/about-pics/img6.jpg";
+import img1 from "../assets/about-pics/img1.webp";
+import img2 from "../assets/about-pics/img2.webp";
+import img3 from "../assets/about-pics/img3.webp";
+import img4 from "../assets/about-pics/img4.webp";
+import img5 from "../assets/about-pics/img5.webp";
+import img6 from "../assets/about-pics/img6.webp";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -280,7 +280,7 @@ export default function Hero() {
         {/* HERO IMAGE */}
         <div className="hero-img absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 overflow-hidden will-change-[transform,opacity,width,height]">
           <img
-            src="/Assets/hero.png"
+            src="/Assets/hero.webp"
             alt="hero"
             className="w-full h-full object-cover object-[82%_70%]"
           />

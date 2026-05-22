@@ -18,6 +18,8 @@ body,
   src: url("/src/assets/fonts/BiggerDisplay.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+  
 }
 @font-face {
   font-family: "Hero-para";
@@ -43,27 +45,26 @@ body,
 }
 @font-face {
   font-family: "Chillax";
-  src: url("./assets/fonts/Chillax.ttf")
-    format("truetype");
-
+  src: url("./assets/fonts/Chillax.woff2")
+    format("woff2");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "apfel";
-  src: url("./assets/fonts/ApfelGrotezk-Regular.otf")
-    format("opentype");
-
+src: url('/fonts/ApfelGrotezk-Regular.woff2') format("woff2");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "yatra";
-  src: url("./assets/fonts/YatraOne-Regular.ttf")
-    format("truetype");
-
+  src: url("./assets/fonts/YatraOne-Regular.woff2")
+    format("woff2");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @theme {

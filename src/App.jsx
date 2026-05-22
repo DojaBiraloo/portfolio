@@ -1,23 +1,46 @@
-import Preloader from './Components/Preloader.jsx'
-import Experience from './Components/Experience.jsx'
-import NavBar from './Components/NavBar.jsx'
-import WorkSection from './Components/WorkSection.jsx'
-import Footer from './Components/Footer.jsx'
-import LocomotiveProvider from './LocomotiveContext.jsx'
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
+import { useEffect } from "react";
+import Preloader from "./Components/Preloader";
+import NavBar from "./Components/NavBar";
+import Experience from "./Components/Experience";
+import WorkSection from "./Components/WorkSection";
+import Footer from "./Components/Footer";
+
+gsap.registerPlugin(ScrollTrigger);
+gsap.config({ force3D: true, nullTargetWarn: false });
+ScrollTrigger.config({ limitCallbacks: true, ignoreMobileResize: true });
 
 const App = () => {
-  return (
-    <LocomotiveProvider>
-      {/* No data-scroll-container needed in v5 — uses native scroll */}
-      <div className="relative min-h-screen overflow-x-hidden">
-        <Preloader />
-        <NavBar />
-        <Experience />
-        <WorkSection />
-        <Footer />
-      </div>
-    </LocomotiveProvider>
-  )
-}
 
-export default App
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    // Connect Lenis to GSAP ScrollTrigger
+    lenis.on("scroll", ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      lenis.destroy();
+      gsap.ticker.remove(lenis.raf);
+    };
+  }, []);
+
+  return (
+    <div className="relative min-h-screen overflow-x-hidden">
+      <Preloader />
+      <NavBar />
+      <Experience />
+      <WorkSection />
+      <Footer />
+    </div>
+  );
+};
+
+export default App;

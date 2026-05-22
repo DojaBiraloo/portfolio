@@ -1,12 +1,12 @@
-import video1 from "../assets/videos/video1.mp4";
-import video2 from "../assets/videos/video2.mp4";
-import video3 from "../assets/videos/video3.mp4";
-import video4 from "../assets/videos/video4.mp4";
+import video1 from "../assets/videos/video1.webm";
+import video2 from "../assets/videos/video2.webm";
+import video3 from "../assets/videos/video3.webm";
+import video4 from "../assets/videos/video4.webm";
 
-import photo1 from "../assets/photos/photo1.jpg";
-import photo2 from "../assets/photos/photo2.jpg";
-import photo3 from "../assets/photos/photo3.jpg";
-import photo4 from "../assets/photos/photo4.jpg";
+import photo1 from "../assets/photos/photo1.webp";
+import photo2 from "../assets/photos/photo2.webp";
+import photo3 from "../assets/photos/photo3.webp";
+import photo4 from "../assets/photos/photo4.webp";
 
 const videos = [
   {

@@ -26,18 +26,21 @@ export default function EducationTimeline() {
         {
           opacity: 0,
           y: 40,
+          force3D: true,
         }
       );
 
       gsap.set(lineRef.current, {
         scaleY: 0,
         transformOrigin: "top center",
+        force3D: true,
       });
 
       gsap.set(itemsRef.current, {
         opacity: 0,
         y: 80,
         scale: 0.95,
+        force3D: true,
       });
 
       // =========================
@@ -49,9 +52,9 @@ export default function EducationTimeline() {
           trigger: sectionRef.current,
           start: "top top",
           end: "+=250%",
-          scrub: true,
+          scrub: 0.5,   // number instead of true = smoother catch-up
           pin: true,
-          anticipatePin: 1,
+          pinSpacing: true,
         },
       });
 
@@ -64,6 +67,7 @@ export default function EducationTimeline() {
         borderRadius: "40px",
         ease: "none",
         duration: 1,
+        force3D: true,
       });
 
       // =========================
@@ -77,6 +81,7 @@ export default function EducationTimeline() {
           y: 0,
           duration: 0.5,
           ease: "power2.out",
+          force3D: true,
         },
         0.15
       );
@@ -88,6 +93,7 @@ export default function EducationTimeline() {
           y: 0,
           duration: 0.7,
           ease: "power3.out",
+          force3D: true,
         },
         0.22
       );
@@ -99,6 +105,7 @@ export default function EducationTimeline() {
           y: 0,
           duration: 0.6,
           ease: "power2.out",
+          force3D: true,
         },
         0.3
       );
@@ -113,6 +120,7 @@ export default function EducationTimeline() {
           scaleY: 1,
           duration: 0.8,
           ease: "power2.out",
+          force3D: true,
         },
         0.45
       );
@@ -162,7 +170,8 @@ export default function EducationTimeline() {
     <section
     id="education"
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-[#151409] px-6 py-24 text-[#fff8df] sm:px-10 lg:px-20 "
+      className="relative min-h-screen overflow-hidden bg-[#151409] px-6 py-24 text-[#fff8df] sm:px-10 lg:px-20"
+      style={{ willChange: "transform" }}
     >
       {/* BACKGROUND GLOW */}
       <div className="absolute -left-24 top-24 h-80 w-80 rounded-full bg-[#ffc225]/10 blur-3xl" />
@@ -184,7 +193,7 @@ export default function EducationTimeline() {
 
           <h2
             ref={headingRef}
-            className="font-chillax text-5xl font-black tracking-tight text-[#fff1b8] sm:text-6xl lg:text-7xl "
+            className="font-chillax text-5xl font-black tracking-tight text-[#fff1b8] sm:text-6xl lg:text-7xl"
           >
             Education
           </h2>
@@ -223,7 +232,8 @@ export default function EducationTimeline() {
 
               <div
                 ref={(el) => (itemsRef.current[index] = el)}
-                className={`relative ml-14 rounded-3xl border border-[#ffc225]/20 bg-[#211b0e]/75 p-7 shadow-2xl shadow-black/45 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-[#ffc225]/55 hover:bg-[#2b220f]/85 md:ml-0 ${
+                style={{ willChange: "transform, opacity" }}
+                className={`relative ml-14 rounded-3xl border border-[#ffc225]/20 bg-[#211b0e]/90 p-7 shadow-2xl shadow-black/45 transition-all duration-300 hover:-translate-y-2 hover:border-[#ffc225]/55 hover:bg-[#2b220f]/95 md:ml-0 ${
                   item.side === "left"
                     ? "md:col-start-1 md:text-right"
                     : "md:col-start-3 md:text-left"

@@ -2,8 +2,6 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { HiMenuAlt4 } from "react-icons/hi";
-import { IoClose } from "react-icons/io5";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -70,7 +68,6 @@ export default function NavBar() {
 
       const showNav = () => {
         hasHeroEnteredRef.current = true;
-
         gsap.to(navShellRef.current, {
           autoAlpha: 1,
           y: 0,
@@ -123,23 +120,10 @@ export default function NavBar() {
           attr: { d: OPEN_FULL },
           ease: "power4.out",
         })
-        .to(
-          menuLogo,
-          {
-            duration: 0.1,
-            opacity: 1,
-            ease: "none",
-          },
-          "-=0.75"
-        )
+        .to(menuLogo, { duration: 0.1, opacity: 1, ease: "none" }, "-=0.75")
         .to(
           infoItems,
-          {
-            duration: 0.75,
-            opacity: 1,
-            ease: "power3.out",
-            stagger: 0.075,
-          },
+          { duration: 0.75, opacity: 1, ease: "power3.out", stagger: 0.075 },
           "-=0.35"
         )
         .to(
@@ -167,7 +151,6 @@ export default function NavBar() {
 
           isAnimatingRef.current = false;
 
-          // Scroll to the section the user clicked after menu closes
           if (pendingScrollRef.current) {
             const target = document.querySelector(pendingScrollRef.current);
             if (target) target.scrollIntoView({ behavior: "smooth" });
@@ -177,34 +160,12 @@ export default function NavBar() {
       });
 
       closeTl.current
-        .to(menuLogo, {
-          duration: 0.3,
-          opacity: 0,
-        })
-        .to(
-          linkChars,
-          {
-            duration: 0.25,
-            opacity: 0,
-            ease: "none",
-          },
-          "<"
-        )
-        .to(
-          infoItems,
-          {
-            duration: 0.3,
-            opacity: 0,
-          },
-          "<"
-        )
+        .to(menuLogo, { duration: 0.3, opacity: 0 })
+        .to(linkChars, { duration: 0.25, opacity: 0, ease: "none" }, "<")
+        .to(infoItems, { duration: 0.3, opacity: 0 }, "<")
         .to(
           menuPath,
-          {
-            duration: 0.5,
-            attr: { d: CLOSE_BULGE },
-            ease: "power3.in",
-          },
+          { duration: 0.5, attr: { d: CLOSE_BULGE }, ease: "power3.in" },
           "<"
         )
         .to(menuPath, {
@@ -225,7 +186,6 @@ export default function NavBar() {
 
   const openMenu = () => {
     const menu = menuRef.current;
-
     menu.classList.remove("pointer-events-none");
     menu.classList.add("pointer-events-auto");
 
@@ -272,9 +232,7 @@ export default function NavBar() {
     e.preventDefault();
     if (!isOpenRef.current) return;
 
-    // Store target so closeTl onComplete can scroll to it
     pendingScrollRef.current = href;
-
     isAnimatingRef.current = true;
     isOpenRef.current = false;
     setIsMenuOpen(false);
@@ -322,26 +280,49 @@ export default function NavBar() {
           </a>
 
           <div className="flex items-center">
-  <button
-    type="button"
-    onClick={handleToggle}
-    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-    aria-expanded={isMenuOpen}
-    className="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full p-0 text-[#222225] transition-colors duration-300 hover:bg-black/5 max-[700px]:h-9 max-[700px]:w-9"
-  >
-    <HiMenuAlt4
-      ref={menuIconRef}
-      className="absolute text-[1.7rem] text-[#222225]"
-      aria-hidden="true"
-    />
+            <button
+              type="button"
+              onClick={handleToggle}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
+              className="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full p-0 text-[#222225] transition-colors duration-300 hover:bg-black/5 max-[700px]:h-9 max-[700px]:w-9"
+            >
+              {/* Hamburger icon — replaces HiMenuAlt4 */}
+              <svg
+                ref={menuIconRef}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="absolute h-[1.7rem] w-[1.7rem] text-[#222225]"
+                aria-hidden="true"
+              >
+                <line x1="3" y1="7" x2="21" y2="7" />
+                <line x1="7" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="17" x2="21" y2="17" />
+              </svg>
 
-    <IoClose
-      ref={closeIconRef}
-      className="absolute text-[1.85rem] text-[#222225] opacity-0"
-      aria-hidden="true"
-    />
-  </button>
-</div>
+              {/* Close icon — replaces IoClose */}
+              <svg
+                ref={closeIconRef}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="absolute h-[1.85rem] w-[1.85rem] text-[#222225] opacity-0"
+                aria-hidden="true"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div
@@ -377,7 +358,6 @@ export default function NavBar() {
             aria-label="Home"
             className="absolute left-8 top-8 block font-serif text-2xl font-black uppercase tracking-[-0.04em] text-[#222225] opacity-0"
           >
-        
           </a>
 
           <div className="flex flex-1 flex-col justify-end">
@@ -460,9 +440,7 @@ export default function NavBar() {
                     key={`${link.name}-${charIndex}`}
                     ref={(el) => {
                       if (el) {
-                        linkCharsRef.current[
-                          linkIndex * 30 + charIndex
-                        ] = el;
+                        linkCharsRef.current[linkIndex * 30 + charIndex] = el;
                       }
                     }}
                     className="inline-block will-change-transform"
